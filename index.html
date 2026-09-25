@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZOMBIE OPEN WORLD — Procedural</title>
+    <style>
+      *{margin:0;padding:0;box-sizing:border-box}
+      html,body{width:100%;height:100%;overflow:hidden;background:#0f1411}
+      #game{width:100%;height:100%;display:block}
+      #overlay{position:fixed;inset:0;display:grid;place-items:center;background:rgba(8,12,10,.78);backdrop-filter:blur(6px);z-index:10;cursor:pointer}
+      #overlay.hidden{display:none}
+      #panel{background:#1a2220;border:1px solid #2a3a36;padding:28px 32px;border-radius:14px;text-align:center;color:#d8e0dc;max-width:420px}
+      #panel h1{font:700 22px/1.1 system-ui;letter-spacing:.04em;color:#e6f0e8}
+      #panel p{font:400 13px/1.5 system-ui;color:#9bb0a8;margin:10px 0 18px}
+      #panel kbd{background:#0f1411;border:1px solid #2a3a36;border-bottom-width:2px;padding:2px 6px;border-radius:4px;font:700 11px system-ui}
+      #panel button{width:100%;padding:12px;border:0;border-radius:8px;background:#6b8f7a;color:#0a1310;font:700 13px system-ui;letter-spacing:.08em;cursor:pointer}
+      #hud{position:fixed;top:12px;left:12px;z-index:5;color:#cfe0d8;font:600 11px/1.4 ui-monospace,monospace;background:rgba(12,18,16,.72);border:1px solid #24302d;padding:10px 12px;border-radius:10px;min-width:210px;pointer-events:none}
+      #hud b{color:#8fd1a8}
+      #cross{position:fixed;left:50%;top:50%;width:14px;height:14px;transform:translate(-50%,-50%);z-index:4;pointer-events:none}
+      #cross:before,#cross:after{content:"";position:absolute;background:#d8e6dc;opacity:.9}
+      #cross:before{left:6px;top:0;width:2px;height:14px}
+      #cross:after{left:0;top:6px;width:14px;height:2px}
+      #notice{position:fixed;left:50%;top:18%;transform:translateX(-50%);z-index:6;color:#e8f3ea;background:rgba(10,16,13,.8);border:1px solid #2a3d34;padding:8px 14px;border-radius:999px;font:700 12px system-ui;letter-spacing:.06em;opacity:0;transition:opacity .2s}
+      #notice.show{opacity:1}
+    </style>
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+    <div id="cross"></div>
+    <div id="hud">Cargando…</div>
+    <div id="notice"></div>
+    <div id="overlay">
+      <div id="panel">
+        <h1>ZOMBIE OPEN WORLD</h1>
+        <p>Procedural FPS • <kbd>WASD</kbd> mover • <kbd>SHIFT</kbd> correr • <kbd>Mouse</kbd> mirar • <kbd>Clic</kbd> disparar • <kbd>R</kbd> recargar</p>
+        <button id="enter">ENTRAR — Click para bloquear mouse</button>
+        <p style="margin-top:12px;font-size:11px;opacity:.7">Terreno modular en Worker • chunks 24m • niebla + Performance HUD</p>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
