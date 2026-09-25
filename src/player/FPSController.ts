@@ -13,7 +13,7 @@ export class FPSController {
   decel=22
   maxWalk=4.3
   maxRun=7.0
-  constructor(private camera: THREE.PerspectiveCamera){
+  constructor(private camera: THREE.PerspectiveCamera, private canvas: HTMLCanvasElement){
     addEventListener('keydown', e=>{
       if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight'].includes(e.code)){
         if(e.code.startsWith('Arrow')||e.code.startsWith('Shift')||e.code.startsWith('Key')) e.preventDefault()
@@ -25,9 +25,9 @@ export class FPSController {
     addEventListener('mousedown', e=>{ if(e.button===0) this.mouseDown=true })
     addEventListener('mouseup', e=>{ if(e.button===0) this.mouseDown=false })
     addEventListener('mousemove', e=>{
-      if(document.pointerLockElement){
+      if(document.pointerLockElement === this.canvas){
         this.yaw -= e.movementX*0.0022
-        this.pitch = Math.max(-1.25, Math.min(1.25, this.pitch - e.movementY*0.0022))
+        this.pitch = Math.max(-1.35, Math.min(1.35, this.pitch - e.movementY*0.0022))
       }
     })
   }
